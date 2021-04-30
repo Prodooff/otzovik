@@ -1,17 +1,20 @@
 <?php
     session_start();
-    if($_SESSION['role'] != 'user'){
+    if($_SESSION['role'] != 'user')
+    {
         header("Location: index.php"); exit();
     }
-    if($_SESSION['role'] == 'admin'){
+    if($_SESSION['role'] == 'admin')
+    {
         ?><script>document.location.href='adminPage.php'</script><?
     }
-    if (isset($_GET['leave'])){
+    if (isset($_GET['leave']))
+    {
         $_SESSION = array();
         session_destroy();
         header("Location: index.php"); exit();
     }
-    require_once 'connection.php';
+    require_once 'conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CompFix</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="favicon" href="favicon.ico">
     <style>
     select {
         background-color: transparent;
@@ -45,11 +47,11 @@
             <img src="logo1.png" width='' alt="">
         </div>
         <div id="name"><a href="index.php">CompFix</a></div>
-
-        <div id="check"><p class="loginPHP"><?php echo $_SESSION['login'].' - '.$_SESSION['role'];?></p><form action="" method="get"><input type="submit" value="Выйти" name='leave'></form></div>
+   
+        <div id="controls"><p class="loginPHP"><?php echo $_SESSION['login'].' - '.$_SESSION['role'];?></p><form action="" method="get"><input type="submit" value="Выйти" name='leave'></form></div>
     </header>
     <main>
-    <form action="" method='post' id="userForm">
+    <form action="" method='post'>
         <div class="reviews" align='center'>
             <h2>Оставить отзыв</h2>
             <div class='stars'>
@@ -66,7 +68,7 @@
                 <textarea name="otz" required id="" cols="30" rows="10" style="resize:none"></textarea>
                 <input type="submit" name='otpr' value ="Отправить" class="button">
             </div>
-
+            
         </div>
         <? include("modal.php") ?>
         <a href="#" data-bs-toggle="modal" data-bs-target="#checkUrReviews"><input type="submit" value="Просмотреть заявки в очереди на одобрение"></a>
@@ -74,7 +76,9 @@
     </main>
     <footer>
         <div class="contacts">
-             Наш телефон: 7(968)389-18-42
+           <a href='https://vk.com' align='center'><img src="VK.png" alt=""></a>
+           <a href='https://facebook.com' align='center'><img src="face.png" alt=""></a>
+           <a href='https://instagram.com' align='center'><img src="inst.png" alt=""></a>
         </div>
         <br>
         <div class="copyright">
@@ -85,9 +89,10 @@
 </html>
 <?php
     if(isset($_POST['otpr'])){
+        
         $otz=$_POST["otz"];
         $str = $_POST["str"];
-        $sqlin = "INSERT INTO reviews (id_user,stars,review) VALUES ('".$_SESSION['id_user']."','".$str."','".$otz."')";
+        $sqlin = "INSERT INTO otzivi (id_user,stars,otziv) VALUES ('".$_SESSION['id_user']."','".$str."','".$otz."')";
         mysqli_query($link,$sqlin);
         ?>
         <script>

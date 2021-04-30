@@ -4,7 +4,6 @@ body{
     max-width: 1920px;
     margin: 0 auto;
 }
-
 a,a:visited{
     color: rgb(228, 228, 228);
 }
@@ -28,12 +27,13 @@ header{
     font-size: 42px;
 }
 .contacts{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     width:50%;
 }
 
-#check{
+#controls
+{
     display: inline-flex;
     align-items: center;
     justify-content: space-around;
@@ -208,12 +208,4 @@ input[type=button]:hover {
 .modal-dialog {
     max-width: 800px;
     margin: 1.75rem auto;
-}
-#userForm{
-  width: 60%
-}
-#comm{
-  display: none;
-  justify-content: center;
-  align-items: center;
 }

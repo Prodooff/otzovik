@@ -13,7 +13,7 @@
         $_SESSION = array();
         session_destroy();
         header("Location: index.php"); exit();
-    }
+    }   
     require_once 'conn.php';
 ?>
 <!DOCTYPE html>
@@ -37,15 +37,15 @@
     <main>
         <div>Ваши отзывы</div>
         <?
-            $get = "SELECT `stars`, `otziv`, `id_otziv` FROM reviews WHERE id_user='".$_SESSION['id_user']."'";
+            $get = "SELECT `stars`, `otziv`, `id_otziv` FROM otzivi WHERE id_user='".$_SESSION['id_user']."'";
             $sql=mysqli_query($link,$get);
             while($t = mysqli_fetch_row($sql)){
                 Echo '<form method="POST">','оценка:', $t[0], '<br>отзыв', $t[1],'<br>','<input type="hidden" name="id_hide" value=',$t[2],'>','<input type="submit" name="del" value="удалить">','</form>','<br>';
             }
             if(isset($_POST['del'])){
                 $s1=$_POST['id_hide'];
-
-                $sqldel=mysqli_query($link, "DELETE FROM `reviews` WHERE `reviews`.`id_otziv` = ".$s1."");
+               
+                $sqldel=mysqli_query($link, "DELETE FROM `otzivi` WHERE `otzivi`.`id_otziv` = ".$s1."");
                 echo '<script> document.location.href="userPage2.php    "</script>';
             }
         ?>

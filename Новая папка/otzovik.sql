@@ -24,24 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Table structure for table `otzivi`
 --
 
-CREATE TABLE `reviews` (
-  `id_review` int(11) NOT NULL,
+CREATE TABLE `otzivi` (
+  `id_otziv` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `stars` int(1) NOT NULL,
-  `review` text NOT NULL,
+  `otziv` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `likes` int(11) NOT NULL DEFAULT '0',
   `dislikes` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `reviews`
+-- Dumping data for table `otzivi`
 --
 
-INSERT INTO `reviews` (`id_review`, `id_user`, `stars`, `review`, `status`, `likes`, `dislikes`) VALUES
+INSERT INTO `otzivi` (`id_otziv`, `id_user`, `stars`, `otziv`, `status`, `likes`, `dislikes`) VALUES
 (2, 1, 4, 'ewqfEWAWEFDSFEFSEAFAWDAW FDS  F SD FS', 1, 15, 1),
 (3, 1, 3, 'dasdadwadawd dawdadwa', 1, 0, 0),
 (4, 5, 4, 'САЛО ЭТО КЛЕВО', 1, 0, 0),
@@ -81,10 +81,10 @@ INSERT INTO `users` (`id_user`, `login`, `password`, `role`, `accept`) VALUES
 --
 
 --
--- Indexes for table `reviews`
+-- Indexes for table `otzivi`
 --
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id_review`),
+ALTER TABLE `otzivi`
+  ADD PRIMARY KEY (`id_otziv`),
   ADD KEY `id_user` (`id_user`);
 
 --
@@ -99,10 +99,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `reviews`
+-- AUTO_INCREMENT for table `otzivi`
 --
-ALTER TABLE `reviews`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `otzivi`
+  MODIFY `id_otziv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -115,10 +115,10 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `reviews`
+-- Constraints for table `otzivi`
 --
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+ALTER TABLE `otzivi`
+  ADD CONSTRAINT `otzivi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

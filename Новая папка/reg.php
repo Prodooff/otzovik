@@ -8,20 +8,24 @@
     {
         header("Location: adminPage.php"); exit();
     }
-    require_once 'connection.php';
+    require_once 'conn.php';
     if (!$link) {
         die('Ошибка соединения: ' . mysqli_error());
     }
-    else{
-        if (isset($_POST['submit'])){
-            if (isset($_POST['login'])&&isset($_POST['pas'])){
+    else
+    {
+        if (isset($_POST['submit']))
+        {
+            if (isset($_POST['login'])&&isset($_POST['pas']))
+            {
                 if(($_POST['pas'])===($_POST['pas2'])){
                 $query = mysqli_query($link, "SELECT id_user, password FROM users WHERE login='".mysqli_real_escape_string($link, $_POST['login'])."'");
                 if(mysqli_num_rows($query)>0)
                 {
 
                 }
-                else{
+                else
+                {
                     $data = mysqli_fetch_assoc($query);
                     $login = $_POST['login'];
                     $password = md5(md5(trim($_POST['pas'])));
@@ -29,7 +33,7 @@
                     ?>
                     <script>
                       document.location.href="index.php"
-                      alert("Вы зарегестрированы ! Ожидайте проверку администратором")
+                      alert("Вы зарегестрированы!Ожидайте проверку администратором")
                     </script>
                     <?php
                 }
@@ -51,8 +55,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="favicon" href="favicon.ico">
-
     <title>CompFix</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -62,7 +64,7 @@
             <img src="logo1.png" width='' alt="">
         </div>
         <div id="name"><a href="index.php">CompFix</a></div>
-        <div id="check"><a href="auth.php">Авторизация</a><a href="reg.php">Регистрация</a></div>
+        <div id="controls"><a href="auth.php">Авторизация</a><a href="reg.php">Регистрация</a></div>
     </header>
     <main>
         <form action="" method="POST">
@@ -74,7 +76,9 @@
     </main>
     <footer>
         <div class="contacts">
-            Наш телефон: 7(968)389-18-42
+           <a href='https://vk.com' align='center'><img src="VK.png" alt=""></a>
+           <a href='https://facebook.com' align='center'><img src="face.png" alt=""></a>
+           <a href='https://instagram.com' align='center'><img src="inst.png" alt=""></a>
         </div>
         <br>
         <div class="copyright">
